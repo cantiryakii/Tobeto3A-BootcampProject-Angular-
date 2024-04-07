@@ -1,35 +1,18 @@
 import { Component ,OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { GetListBootcampResponse } from '../../Models/responses/Bootcamp/get-list-bootcamp-response';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from "@angular/common/http";
-import { bootcampResponseModel } from '../../Models/responses/ResponseModel/bootcampResponseModel';
-
+import { BootcampListGroupComponent } from '../../features/components/bootcamps/bootcamp-list-group/bootcamp-list-group.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InstructorComponent } from "../../features/components/instructor/instructor.component";
 
 @Component({
-  selector: 'app-homepage',
-  standalone: true,
-  imports: [RouterModule,CommonModule],
-  templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.scss'
+    selector: 'app-homepage',
+    standalone: true,
+    templateUrl: './homepage.component.html',
+    styleUrl: './homepage.component.css',
+    imports: [RouterModule]
 })
-export class HomepageComponent implements OnInit{
-  apiUrl = "http://localhost:5062/api/Bootcamp/GetAllAsync";
-  Bootcamps: GetListBootcampResponse[] = [];
+export class HomepageComponent  {
 
 
-  constructor(private HttpClient: HttpClient) {}
-
-  ngOnInit(): void {
-    console.log("asd");
-    this.getBootcamps();
-  }
-
-   getBootcamps() {
-     this.HttpClient.get<bootcampResponseModel>(this.apiUrl).subscribe(
-       (response) => {
-         this.Bootcamps = response.data;
-       }
-     );
-      }
-    }
+}
